@@ -189,6 +189,17 @@ delete user.age;
 
 //Code here
 
+class Cat {
+	constructor(name, age, color) {
+		this.name = name;
+		this.age = age;
+		this.color = color;
+	}
+}
+const skye = new Cat("skye, 12, white");
+
+console.log(skye.name);
+
 //////////////////////////// PROBLEM 13 ////////////////////////////
 /*
   Create a class called 'Wizard'. Make sure to call your constructor, and require these 3 parameters: name, age, favoriteSpell.
@@ -198,6 +209,20 @@ delete user.age;
 */
 
 //Code here
+
+class Wizard {
+	constructor(name, age, favoriteSpell) {
+		this.name = name;
+		this.age = age;
+		this.favoriteSpell = favoriteSpell;
+	}
+	castSpell() {
+		console.log(`${this.name} has cast ${this.favoriteSpell}`);
+	}
+}
+
+const ron = new Wizard("Ronald", 11, "eat-slugs");
+ron.castSpell("eat-slugs");
 
 //////////////////////////// PROBLEM 14 ////////////////////////////
 /*
@@ -223,6 +248,25 @@ delete user.age;
 */
 
 //Code Here
+class Phone {
+	constructor(brand, model, storage, color, price, sold) {
+		(this.brand = brand),
+			(this.model = model),
+			(this.storage = storage),
+			(this.color = color),
+			(this.price = price),
+			(this.sold = false);
+	}
+
+	sell() {
+		this.sold = true;
+		console.log(`${this.brand} ${this.model} has been sold.`);
+	}
+
+	changePrice(newPrice) {
+		this.price = newPrice;
+	}
+}
 
 /*
     Next make three new phone instances using your class.
@@ -235,6 +279,9 @@ delete user.age;
 */
 
 //Code Here
+const iphone = new Phone("apple", "11", 50, "teal", 800);
+const samsung = new Phone("android", "13", 60, "hotPink", 700);
+const nokia = new Phone("ashtonsDevice", "modelX", 100, "skyBlue", 1000);
 
 /* 
   Call the changePrice function on one of your phones, 
@@ -244,6 +291,9 @@ delete user.age;
 */
 
 //Code Here
+iphone.changePrice(1200);
+
+console.log(iphone);
 
 /*
   Now call the sell method on one of your other phone objects
@@ -252,6 +302,9 @@ delete user.age;
 */
 
 //Code Here
+samsung.sell();
+
+console.log(samsung);
 
 //////////////////////////// PROBLEM 15 ////////////////////////////
 
@@ -312,12 +365,23 @@ const shippingInfo = {
 */
 
 //Code Here
+class Vehicle {
+	constructor(capacity, color, mileage) {
+		(this.capacity = capacity), (this.color = color), (this.mileage = mileage);
+	}
+
+	move(miles) {
+		this.mileage += miles;
+		console.log(this.mileage);
+	}
+}
 
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 //Code Here
+const myFirstVehicle = new Vehicle(4, "blue", 80000);
 
 /* 
   Now we'll create a class that's based off of the vehicle class. 
@@ -328,16 +392,26 @@ const shippingInfo = {
 */
 
 //Code Here
+class Motorcycle extends Vehicle {
+	constructor(capacity, color, mileage, make, isCool) {
+		super(capacity, color, mileage);
+		this.make = make;
+		this.isCool = isCool;
+	}
+}
 
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
 //Code Here
+const myFirstMotorcycle = new Motorcycle(1, "black", 3000, "Ducati", true);
 
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
+
+myFirstMotorcycle.move(100);
 
 /*
   Let's make another class based off of Vehicle. 
@@ -356,6 +430,26 @@ const shippingInfo = {
 */
 
 //Code Here
+class Boat extends Vehicle {
+	constructor(capacity, color, mileage, name, type, isSeaworthy) {
+		super(capacity, color, mileage);
+		this.name = name;
+		this.type = type;
+		this.isSeaworthy = isSeaworthy;
+	}
+
+	checkSeaworthiness() {
+		if (this.isSeaworthy) {
+			console.log(`The ${this.type} ${this.name} is seaworthy!`);
+		} else {
+			console.log(`You need to get your ${this.type} in shape!`);
+		}
+	}
+
+	performMaintenance() {
+		this.isSeaworthy = true;
+	}
+}
 
 /*
   Create a new boat using your class. You can choose whatever values you like for all the 
@@ -363,21 +457,25 @@ const shippingInfo = {
 */
 
 //Code Here
+const myFirstBoat = new Boat(10, "red", 20000, "Mark 37", "yacht", false);
 
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
 //Code Here
+myFirstBoat.checkSeaworthiness();
 
 /*
   Now run the performMaintenance method on your boat
 */
 
 //Code Here
+myFirstBoat.performMaintenance();
 
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
 //Code Here
+myFirstBoat.checkSeaworthiness();
